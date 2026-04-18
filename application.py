@@ -9,6 +9,10 @@ application = Flask(__name__)
 model = joblib.load('sentiment_model.joblib') 
 @application.route('/predict', methods=['POST']) 
 
+@application.route("/")
+def home():
+    return "OK"
+
 def predict(): 
 # Parse the incoming JSON request 
     data = request.get_json() 
