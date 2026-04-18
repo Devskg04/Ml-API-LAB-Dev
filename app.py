@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify 
 import joblib 
+import os
+
 
 application = Flask(__name__) 
 
@@ -22,4 +24,4 @@ def predict():
 
 if __name__ == '__main__': 
 # Listen on all network interfaces (0.0.0.0) so Docker can expose it 
-    app.run(host='0.0.0.0', port=5000)
+    application.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
